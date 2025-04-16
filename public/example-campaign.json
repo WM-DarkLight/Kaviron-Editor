@@ -1,0 +1,49 @@
+{
+  "id": "romulan-crisis",
+  "title": "Romulan Crisis",
+  "author": "User Example",
+  "description": "A multi-episode campaign exploring rising tensions with the Romulan Empire and the search for a diplomatic solution.",
+  "version": "1.0",
+  "episodes": [
+    {
+      "episodeId": "romulan-negotiations",
+      "title": "Romulan Negotiations",
+      "description": "Navigate delicate negotiations with the Romulan Empire to secure a peace treaty.",
+      "order": 1
+    },
+    {
+      "episodeId": "diplomatic-mission",
+      "title": "Diplomatic Mission: The Romulan Envoy",
+      "description": "Escort a Romulan diplomat to a crucial peace conference.",
+      "order": 2,
+      "condition": {
+        "previousEpisodeId": "romulan-negotiations",
+        "flags": {
+          "peacefulResolution": true
+        }
+      },
+      "initialState": {
+        "flags": {
+          "romulansCooperative": true
+        }
+      }
+    },
+    {
+      "episodeId": "romulan-encounter",
+      "title": "Neutral Zone Incident",
+      "description": "Deal with the aftermath of the negotiations breaking down.",
+      "order": 2,
+      "condition": {
+        "previousEpisodeId": "romulan-negotiations",
+        "flags": {
+          "peacefulResolution": false
+        }
+      },
+      "initialState": {
+        "flags": {
+          "romulansHostile": true
+        }
+      }
+    }
+  ]
+}
